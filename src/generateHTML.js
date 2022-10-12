@@ -1,10 +1,8 @@
-// Generate the HTML texts for the HTML output file.
-// Returns an array holding strings of HTML texts.
+// Generate the HTML texts output file.
 module.exports = {
   generateHTML(team) {
     // Array to hold HTML text strings.
     const htmlArr = [];
-
     const htmlHeader = `
 <!DOCTYPE html>
 <html lang = "en">
@@ -20,7 +18,7 @@ module.exports = {
   <link rel = "stylesheet" href = "../src/style.css">
 </head>
 <body>
-  <div class = "title-bar">
+  <div class = "titlebanner">
      <h1>My Team</h1>
   </div>
   <div class = "card-container">
@@ -35,7 +33,7 @@ module.exports = {
               <h2>${team[i].name}</h2>
               `;
 
-      // Verify the team member's role to display the appropriate icon
+      // Checks role to assign correct icon 
       if (team[i].getRole() === "Manager") {
         teamMemberHtml += `<h2 class="bi bi-cup">  ${team[i].getRole()}</h2>`;
       } else if (team[i].getRole() === "Engineer") {
@@ -51,15 +49,15 @@ module.exports = {
               <P><b>Email:</b><br><a href = "mailto:${team[i].email}">${team[i].email}</a></p>
         `;
 
-      // If the team member is the manager, display the office number.
+      // If Manager then display the office number
       if (team[i].officeNumber) {
         teamMemberHtml += `<p><b>Office Number:</b><br>${team[i].officeNumber}</p>`;
       }
-      // If the team member is an engineer, display the Github username.
+      // If Engineer then display their GitHub
       else if (team[i].github) {
         teamMemberHtml += `<p><b>GitHub:</b><br><a href = "https://github.com/${team[i].github}">${team[i].github}</a></p>`;
       }
-      // If the team member is an intern, display the intern's school name.
+      // If Intern then display their school
       else if (team[i].getSchool()) {
         teamMemberHtml += `<p><b>School:</b><br>${team[i].getSchool()}</p>`;
       }
@@ -78,7 +76,7 @@ module.exports = {
 `;
    htmlArr.push(htmlFooter);
 
-    // Return the HTML text strings in the array object.
+    // Return the HTML text
     return htmlArr;
   },
 };
