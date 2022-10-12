@@ -7,6 +7,7 @@ const Intern = require('./lib/Intern');
 
 const team = [];
 
+//Questions for the Manager
 const managerQuestions = [
   {
     type:'input',
@@ -29,7 +30,7 @@ const managerQuestions = [
     message: 'What is your office number?',
   }
 ]
-
+//Questions for the Engineer
 const engineerQuestions = [
   {
     type:'input',
@@ -52,7 +53,7 @@ const engineerQuestions = [
     message: 'What is your GitHub username?',
   }
 ]
-
+//Questions for the Intern
 const internQuestions = [
   {
     type: 'input',
@@ -76,6 +77,7 @@ const internQuestions = [
   }
 ]
 
+//Questions for the addition of new team member
 const newMember = [
   {
     type:'list',
@@ -84,7 +86,7 @@ const newMember = [
     choices: ['Engineer', 'Intern', 'None'],
   }
 ]
-
+//prompts the questions and applies the unique question for the chosen role
 function addMember(questions, type) {
   let uniqueQuestion;
   inquirer.prompt(questions)
@@ -105,7 +107,7 @@ function addMember(questions, type) {
       additionalMembers()
     })
 }
-
+//selects the questions based on chosen role
 function additionalMembers() {
   inquirer.prompt(newMember)
   .then((answers)=>{
@@ -118,7 +120,6 @@ function additionalMembers() {
         break;
       default:
         //call function to generate html
-        // htmlFile();
       const holdHtmlArr = holdHTML.generateHTML(team);
       fs.writeFile('./dist/team.html', holdHtmlArr.join(""), (err)=>
       err? console.log(err):console.log('HTML created successfully!'))
@@ -126,4 +127,5 @@ function additionalMembers() {
   })
 }
 
+//starts the process
 addMember(managerQuestions, Manager);
