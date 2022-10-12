@@ -35,11 +35,11 @@ module.exports = {
 
       // Checks role to assign correct icon 
       if (team[i].getRole() === "Manager") {
-        teamMemberHtml += `<h2 class="bi bi-cup">  ${team[i].getRole()}</h2>`;
+        teamMemberHtml += `<h2 class="bi bi-cup">${team[i].getRole()}</h2>`;
       } else if (team[i].getRole() === "Engineer") {
-        teamMemberHtml += `<h2 class="bi bi-lightbulb">  ${team[i].getRole()}</h2>`;
+        teamMemberHtml += `<h2 class="bi bi-lightbulb">${team[i].getRole()}</h2>`;
       } else if (team[i].getRole() === "Intern") {
-        teamMemberHtml += `<h2 class="bi bi-eyeglasses">  ${team[i].getRole()}</h2>`;
+        teamMemberHtml += `<h2 class="bi bi-eyeglasses">${team[i].getRole()}</h2>`;
       }
 
       teamMemberHtml += `
